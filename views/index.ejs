@@ -1,0 +1,38 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Movie Search</title>
+	</head>
+	<body>
+		<h1>Movie Search</h1>
+		<form action="/search" method="post">
+			<input
+				type="text"
+				name="searchQuery"
+				placeholder="Enter a movie or show title" />
+			<button type="submit">Search</button>
+		</form>
+
+		<% if (results && results.length > 0) { %>
+		<ul>
+			<% results.forEach(result => { %>
+			<li>
+				<img src="<%= result.Poster %>" alt="<%= result.Title %> Poster" />
+				<p><strong>Title:</strong> <%= result.Title %></p>
+				<p><strong>Year:</strong> <%= result.Year %></p>
+				<p><strong>Type:</strong> <%= result.Type %></p>
+				<form action="/favorite" method="post">
+					<input type="hidden" name="title" value="<%= result.Title %>" />
+					<input type="hidden" name="year" value="<%= result.Year %>" />
+					<input type="hidden" name="type" value="<%= result.Type %>" />
+					<input type="hidden" name="poster" value="<%= result.Poster %>" />
+					<button type="submit">Favorite</button>
+				</form>
+			</li>
+			<% }); %>
+		</ul>
+		<% } %>
+	</body>
+</html>

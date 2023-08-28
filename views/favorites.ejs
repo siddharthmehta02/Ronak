@@ -1,0 +1,21 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Favorite Movies</title>
+	</head>
+	<body>
+		<h1>Favorite Movies</h1>
+		<ul>
+			<% favorites.forEach(favorite => { %>
+			<li>
+				<img src="<%= favorite.poster %>" alt="<%= favorite.title %> Poster" />
+				<p><strong>Title:</strong> <%= favorite.title %></p>
+				<p><strong>Year:</strong> <%= favorite.year %></p>
+				<p><strong>Type:</strong> <%= favorite.type %></p>
+			</li>
+			<% }); %>
+		</ul>
+	</body>
+</html>
